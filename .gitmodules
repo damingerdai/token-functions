@@ -1,0 +1,5 @@
+[submodule "template/node10-express-ts"]
+	path = template/node10-express-ts
+	url = https://github.com/damingerdai/node10-express-ts.git
+	ignore = all
+	branch = master
