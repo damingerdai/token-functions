@@ -8,8 +8,13 @@ git clone https://github.com/damingerdai/token-functions.git
 ```
 
 ## init template
+1. init the gitmodules config
 ```shell script
 git submodule init
+```
+2. pull the template code
+```shell script
+git submodule update
 ```
 
 ## Installation Dependencies
@@ -24,8 +29,14 @@ docker swarm init
 ```
 
 # Deploy Function
+## Install Faas
+install faas from github
+```shell srcipt
+https://github.com/openfaas/faas.git
+```
+
 ## Deploy the FaaS Stack on Docker Swarm
-run `deploy_stack.sh` script in root directory
+run `deploy_stack.sh` script in Faas root directory
 ```shell script
 ./deploy_stack.sh
 ```
@@ -52,15 +63,26 @@ Open [http://127.0.0.1:8080](http://127.0.0.1:8080)  to see the OpenFaaS portal
 > you need input username and password from step *Deploy the FaaS Stack on Docker Swarm*, so don't forget the username and password.
 
 ## Deploy CreateToken
-### Build Create Token Function
+### Build Function
+1. create token function
 ```
 faas-cli build -f createtoken.yml
 ```
-### Deploy Create Token Function
+2. verify token function
+```
+faas-cli build -f verifytoken.yml
+```
+### Deploy Function
+1. create token function
 ```
 faas-cli deploy -f createtoken.yml
 ```
-### Test Create Token Function
+2. verify token function
+```
+faas-cli deploy -f verifytoken.yml
+```
+### Test Function
+1. create token function
 ```
 curl -X POST \
   http://127.0.0.1:8080/function/createtoken \
@@ -70,6 +92,15 @@ curl -X POST \
   -H 'password: ${password}' \
   -H 'username: ${username}'
 ```
+2. verify token function
+```
+curl -X GET \
+  'http://localhost:8080/function/verifytoken?token=${token}' \
+  -H 'Content-Type: application/json' \
+  -H 'User-Agent: PostmanRuntime/7.19.0' \
+  -H 'cache-control: no-cache' 
+```
+> note: `username`,`password` and `token` should be provided by you.
 
 ## Deploy Verify Token Function
 > this function doesn't start to develop.

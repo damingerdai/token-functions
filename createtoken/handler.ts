@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 
 const secret = 'damingerdai';
 
@@ -18,22 +18,25 @@ export = (event, context) => {
                 token
             };
             context
+            .headers({ 'Content-Type': 'application/json' })
             .status(200)
-            .succeed(JSON.stringify(response));
+            .succeed(response);
         } else {
             const response = {
                 error: 'username and password is required'
             };
             context
+            .headers({ 'Content-Type': 'application/json' })
             .status(400)
-            .succeed(JSON.stringify(response));
+            .succeed(response);
         }
     } else {
         const response = {
             error: 'username and password is required'
         };
         context
+        .headers({ 'Content-Type': 'application/json' })
         .status(403)
-        .succeed(JSON.stringify(response));
+        .succeed(response);
     }
 }
