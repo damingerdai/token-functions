@@ -8,8 +8,13 @@ git clone https://github.com/damingerdai/token-functions.git
 ```
 
 ## init template
+1. init the gitmodules config
 ```shell script
 git submodule init
+```
+2. pull the template code
+```shell script
+git submodule update
 ```
 
 ## Installation Dependencies
