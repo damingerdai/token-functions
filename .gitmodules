@@ -3,3 +3,8 @@
 	url = https://github.com/damingerdai/node10-express-ts.git
 	ignore = all
 	branch = master
+[submodule "faas"]
+	path = faas
+	url = https://github.com/openfaas/faas.git
+	ignore = all
+	branch = master
