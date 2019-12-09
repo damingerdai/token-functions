@@ -4,7 +4,7 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "build":  "npx tsc handler.ts",
+    "build": "npx tsc -t es5 handler.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
